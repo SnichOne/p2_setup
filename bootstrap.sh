@@ -1,4 +1,5 @@
 # upgrade packages
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 sudo apt-get update
 sudo apt-get -y upgrade
 
@@ -47,16 +48,13 @@ cp init.vim ~/.config/nvim/
 source ~/.zshenv
 
 
-# confgiure nvim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-
 # install python libraries
 pip install --user cython pandas sklearn bs4 tqdm jupyter pylint pep8 neovim requests
 
 # install neovim plugins
-nvim +BundleInstall +qall
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +PlugInstall +qall
 
 # install deep learning frameworks
 pip install --upgrade --user tensorflow-gpu

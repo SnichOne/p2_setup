@@ -136,3 +136,15 @@ function _virtualenv_auto_activate() {
 # }
 # _virtualenv_auto_activate
 precmd() { _virtualenv_auto_activate }
+
+mkcdir ()
+{
+    mkdir -p -- "$1" &&
+      cd -P -- "$1"
+}
+
+# make ctrl+p, ctrl+n behave exactly like up, down arrows correspondingly
+bindkey "^P" up-line-or-search
+bindkey "^N" down-line-or-search
+bindkey "^[u" kill-line
+bindkey "^[k" kill-line
